@@ -1,0 +1,15 @@
+{% load i18n wagtailadmin_tags %}
+{% trans "Add span" as add_str %}
+{% include "wagtailadmin/shared/header.html" with title=add_str %}
+
+<div class="nice-padding">
+    <form action="{% url 'wagtailadmin_span_form' %}{% querystring %}" method="post">
+        {% csrf_token %}
+        <ul class="fields">
+            {% for field in form %}
+                {% include "wagtailadmin/shared/field_as_li.html" %}
+            {% endfor %}
+            <li><input type="submit" value="{% trans 'Insert span' %}" /></li>
+        </ul>
+    </form>
+</div>
